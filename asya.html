@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+
+        background-color: aqua;
+       
+      
+    }
+    .container {
+        text-align: center;
+    }
+    #login-form {
+        text-align: center;
+    }
+    #login-form input {
+        margin-bottom: 10px;
+        padding: 5px;
+        width: 200px;
+    }
+    #buttons-container {
+        display: none;
+        column-gap: normal;
+    }
+    #picture-container {
+        margin-top: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+    #picture {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+   
+</style>
+</head>
+<body>
+    <div id="login-form">
+        <input type="text" id="username" placeholder="Username">
+        <br>
+        <input type="password" id="password" placeholder="Password">
+        <br>
+        <button onclick="login()">Login</button>
+        
+        </div>
+    </div>
+    <div id="buttons-container">
+        <button onclick="changePicture('girls')">Girls</button>
+        <button onclick="changePicture('boys')">Boys</button>
+    </div>
+    <div class="profile" id="profile" style="display: var();">
+        <h2 id="profileName"></h2>
+    <div id="picture-container">
+        <img src="ahay.jpg" id="picture" alt="Picture">
+    </div>
+    
+<script>
+    let currentIndex = 0;
+    var currentNames = 0;
+    {
+    
+    var girls = ["JENELLE MEJICA", "SABEL TOMENIO", "JAYANN PECAYO", "CHARIEDEL DELMONTE", "CHANIEL DE ASIS"];
+    var boys = ["VINGENZO SIDRO", "ALBERT QUILICOL", "JOSHUA MUNCADA", "JOHN PAUL ORSAL", "DASTIN QUILICOL"]; 
+    }
+
+    const pictures = {
+        girls: ['jenelle.jpg', 'sabel.jpg', 'jayann.jpg', 'chaniel.jpg', 'chariedel.jpg'],
+        boys: ['vincent.jpg', 'dastin.jpg', 'johnpaul.jpg', 'joshua.jpg', 'albert.jpg']
+
+    }
+   
+    function showGirls() {
+        currentNames = girls;
+        showProfile();
+    }
+
+    function showBoys() {
+        currentNames = boys;
+        showProfile();
+    }
+    function login() {
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+        // Here you can add your login logic, for simplicity, I'm just showing the buttons after login.
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('buttons-container').style.display = 'block';
+    }
+    
+    function changePicture(gender) {
+        const picture = document.getElementById('picture');
+        currentIndex = (currentIndex + 1) % pictures[gender].length;
+        picture.src = pictures[gender][currentIndex];
+    }
+</script>
+
+
+</body>
+</html>

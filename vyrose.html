@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .container {
+        text-align: center;
+        box-shadow: inset;
+    }
+
+    input[type="text"], input[type="password"], input[type="submit"], button {
+        margin: 10px;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+    #profilePicture {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Username">
+        <br>
+        <input type="password" id="password" placeholder="Password">
+        <br>
+        <input type="submit" value="Login" onclick="showButtons()">
+    </form>
+    <div class="buttons" id="buttons" style="display: var();">
+        <button onclick="showGirls()">Girls</button>
+        <button onclick="showBoys()">Boys</button>
+    </div>
+    <div class="profile" id="profile" style="display: var();">
+        <h2 id="profileName"></h2>
+        <img src="ahay.jpg" alt="Profile Picture" id="profilePicture">
+    </div>
+</div>
+
+<script>
+    
+    var girls = ["JENELLE MEJICA", "SABEL TOMENIO", "JAYANN PECAYO", "CHARIEDEL DELMONTE", "CHANIEL DE ASIS"];
+    var boys = ["VINGENZO SIDRO", "ALBERT QUILICOL", "JOSHUA MUNCADA", "JOHN PAUL ORSAL", "DASTIN QUILICOL"];
+    var currentIndex = 0;
+
+    function showButtons() {
+        document.getElementById('buttons').style.display = 'block';
+    }
+
+    function showGirls() {
+        currentNames = girls;
+        showProfile();
+    }
+
+    function showBoys() {
+        currentNames = boys;
+        showProfile();
+    }
+
+    function showProfile() {
+        document.getElementById('profile').style.display = 'block';
+        document.getElementById('profileName').innerText = currentNames[currentIndex];
+        document.getElementById('profilePicture').src = 'profile_picture_' + (currentIndex + 1) + '.jpg';
+        currentIndex++;
+        if (currentIndex >= currentNames.length) {
+            currentIndex = 0; // Reset index for next time
+        }
+    }
+
+
+</script>
+</body>
+</html>
+
